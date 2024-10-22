@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@600;700&family=Raleway:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@600;700&family=Raleway&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,91 +6,36 @@
 
 @layer base {
   body {
-    @apply font-raleway text-lg text-gray-800;
+    @apply bg-[#232D3D] text-white font-raleway text-lg;
   }
-  h1, .h1 {
-    @apply font-merriweather text-3xl font-bold;
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-merriweather;
   }
-  h2, .h2 {
-    @apply font-merriweather text-xl font-semibold;
+  h1 {
+    @apply text-3xl font-bold;
   }
-}
-
-@layer utilities {
-  .bg-primary {
-    background-color: #232D3D;
-  }
-  .bg-secondary {
-    background-color: #F4E956;
-  }
-  .text-primary {
-    color: #232D3D;
-  }
-  .text-secondary {
-    color: #F4E956;
+  h2 {
+    @apply text-xl font-semibold;
   }
 }
 
-@keyframes wave {
-  0%, 100% {
+@layer components {
+  .btn {
+    @apply bg-[#F4E956] text-[#232D3D] px-4 py-2 rounded hover:bg-[#E4D946] transition-colors;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
     transform: translateY(0);
   }
-  50% {
-    transform: translateY(-10px);
-  }
 }
 
-@keyframes build {
-  0% {
-    transform: translateY(100%) skew(-12deg);
-  }
-  100% {
-    transform: translateY(0) skew(-12deg);
-  }
-}
-
-@keyframes sun {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes cloud {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(1200px);
-  }
-}
-
-.animate-wave {
-  animation: wave 3s ease-in-out infinite;
-}
-
-.animate-build {
-  animation: build 2s ease-out forwards;
-}
-
-.animate-sun {
-  animation: sun 4s ease-in-out infinite;
-}
-
-.animate-cloud {
-  animation: cloud 20s linear infinite;
-}
-
-.animation-delay-300 {
-  animation-delay: 300ms;
-}
-
-.animation-delay-600 {
-  animation-delay: 600ms;
-}
-
-.animation-delay-1000 {
-  animation-delay: 1000ms;
+.animate-fadeInUp {
+  animation: fadeInUp 0.5s ease-out;
 }

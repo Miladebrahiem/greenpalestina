@@ -1,68 +1,37 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useQuery, gql } from '@apollo/client';
-import { Heart, Facebook, Twitter, Instagram } from 'lucide-react';
-
-const GET_PAGES = gql`
-  query GetPages {
-    pages {
-      nodes {
-        id
-        title
-        slug
-      }
-    }
-  }
-`;
+import { Facebook, Twitter, Instagram } from 'lucide-react';
 
 const Footer: React.FC = () => {
-  const { loading, error, data } = useQuery(GET_PAGES);
-
   return (
-    <footer className="bg-primary text-secondary py-12">
+    <footer className="bg-secondary text-primary py-8">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
-            <h3 className="text-h2 font-merriweather font-semibold mb-4">Vrienden van Palestina</h3>
-            <p className="font-raleway mb-4">Samen staan we sterk voor vrede en gerechtigheid in Palestina.</p>
-            <Link to="/doe-mee" className="inline-flex items-center bg-secondary text-primary py-2 px-4 rounded-full font-semibold hover:bg-opacity-90 transition duration-300 font-raleway">
-              Doe Mee <Heart className="ml-2" size={16} />
-            </Link>
+        <div className="flex flex-wrap justify-between items-center">
+          <div className="w-full md:w-1/3 mb-6 md:mb-0">
+            <h3 className="text-2xl font-merriweather font-bold mb-4">Vrienden van Palestina</h3>
+            <p className="font-raleway">Supporting Palestinian rights and promoting peace.</p>
           </div>
-          <div>
-            <h3 className="text-h2 font-merriweather font-semibold mb-4">Pagina's</h3>
-            {loading && <p>Loading...</p>}
-            {error && <p>Error loading pages</p>}
-            {data && (
-              <ul className="space-y-2 font-raleway">
-                {data.pages.nodes.map((page: any) => (
-                  <li key={page.id}>
-                    <Link to={`/page/${page.slug}`} className="hover:underline">
-                      {page.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            )}
+          <div className="w-full md:w-1/3 mb-6 md:mb-0">
+            <h4 className="text-xl font-merriweather font-semibold mb-4">Contact Us</h4>
+            <p className="font-raleway">Email: info@vriendenvanpalestina.nl</p>
+            <p className="font-raleway">Phone: +31 123 456 789</p>
           </div>
-          <div>
-            <h3 className="text-h2 font-merriweather font-semibold mb-4">Contact & Social</h3>
-            <p className="font-raleway mb-4">Volg ons op social media voor updates en nieuws.</p>
+          <div className="w-full md:w-1/3">
+            <h4 className="text-xl font-merriweather font-semibold mb-4">Follow Us</h4>
             <div className="flex space-x-4">
-              <a href="#" className="hover:text-secondary transition duration-300">
-                <Facebook size={24} />
+              <a href="#" className="text-primary hover:text-gray-700 transition-colors">
+                <Facebook className="h-6 w-6" />
               </a>
-              <a href="#" className="hover:text-secondary transition duration-300">
-                <Twitter size={24} />
+              <a href="#" className="text-primary hover:text-gray-700 transition-colors">
+                <Twitter className="h-6 w-6" />
               </a>
-              <a href="#" className="hover:text-secondary transition duration-300">
-                <Instagram size={24} />
+              <a href="#" className="text-primary hover:text-gray-700 transition-colors">
+                <Instagram className="h-6 w-6" />
               </a>
             </div>
           </div>
         </div>
-        <div className="mt-8 pt-8 border-t border-gray-700 text-center font-raleway">
-          <p>&copy; {new Date().getFullYear()} Vrienden van Palestina. All rights reserved.</p>
+        <div className="mt-8 text-center">
+          <p className="font-raleway">&copy; 2023 Vrienden van Palestina. All rights reserved.</p>
         </div>
       </div>
     </footer>
